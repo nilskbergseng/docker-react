@@ -1,0 +1,10 @@
+lamguage: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t nk/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true nk/docker-react npm run test -- --coverage
